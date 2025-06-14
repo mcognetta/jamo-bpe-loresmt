@@ -8,6 +8,8 @@ We use `fairseq` and `sentencepiece` as our core implementation details, and onl
 
 This depends on `torch`(we use >=2), `fairseq`, `sentencepiece`, and `sacrebleu`.
 
+To properly install `fairseq`, navigate to the `fairseq` directory and run `pip install --editable ./`.
+
 We include the preprocessed Jeju/Korean corpus from https://aclanthology.org/2020.lrec-1.318/ (and https://github.com/kakaobrain/jejueo, which is licensed under an Apache 2.0 license) to assist you. These are present in `fairseq/examples/kr_translation/orig` and are placed in different subdirectories depending on the representation (note that we use the suffix `_no_end` for `positional` and `compat` jamo to signal that they don't use an explicit empty 종성 character: e.g., `한 -> ㅎㅏㄴ` but `무 -> ㅁㅜ`, not `ㅁㅜ(x)`). 
 
 To add your own corpora, make a similar directory structure, and use `jamo_utils.py` to preprocess the Korean corpus into the correct representation. Non-Korean corpora can be left alone or preprocessed in whatever format you want.
