@@ -20,8 +20,10 @@ To run an experiment, use the `fairseq/examples/kr_translation/train_<src>_<tgt>
     - `bash train_kr_je_sentencepiece.sh --experiment-name <EXPERIMENT_NAME> --jamo-type <JAMO_TYPE> --src-bpe-tokens <STOKENS> --tgt-bpe-tokens <TTOKENS> --src-dropout <SDROPOUT> --target-dropout <TDROPOUT> --seed <SEED>`
     - `<EXPERIMENT_NAME>` is any string identifier
     - `<JAMO_TYPE>` is one of `jeju_syllable`, `jeju_syllable_byte`, `jeju_compat_no_end`, `jeju_positional_no_end`
+        - For other copora, you can put them in a directory like `corpus_syllable_byte` and use that as the jamo type
     - `<STOKENS>` and `<TTOKENS>` are the size of the source and target tokens (default 8k each)
-    - `<SDROPOUT>` and `<TDROPOUT>` are dropout parameters for the tokenizer they should be between 0.0 and 1.0 (default is 0.0, which means no dropout)
+    - `<SDROPOUT>` and `<TDROPOUT>` are dropout parameters for the tokenizer
+        - These should be between 0.0 and 1.0 (default is 0.0, which means no dropout)
     - `<SEED>` is the random seed for training
     - The output folder name is `<EXPERIMENT_NAME>_VOCAB_<STOKENS>_<TTOKENS>_jamo_type_<JAMO_TYPE>_dropout_<SDROPOUT>_<TDROPOUT>_seed_<SEED>.<LANG_PAIR>` in the experiment outputs directory
 
@@ -31,4 +33,4 @@ An example invocation is:
 bash train_kr_je_sentencepiece.sh --experiment-name example --jamo-type jeju_compat_no_end --src-bpe-tokens 4000 --tgt-bpe-tokens 4000 --src-dropout 0.1 --tgt-dropout 0.1 --seed 100 --device 0
 ```
 
-This will make a log file in the `fairseq/experimental_outputs/` directory under a new directory that is built from your run configuration. This directory will hold the training log, the best checkpoint, and, after training, the translated test corpus, and metrics (BLEU, CHRF, etc.).
+This will make a log file in the `fairseq/experimental_outputs/` directory under a new directory that is built from your run configuration. This directory will hold the training log, the best checkpoint, and, after training, the translated test corpus and metrics (BLEU, CHRF, etc.).
